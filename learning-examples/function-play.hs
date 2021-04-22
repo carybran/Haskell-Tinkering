@@ -33,3 +33,27 @@ myguard somevalue
 
 fatshamer :: String
 fatshamer = "Shame on you walking heart attack - that bmi is a to damn high!"
+
+mymax :: (Ord a) => a -> a -> a
+mymax a b
+  | a > b = a
+  | otherwise = b
+
+mycomp :: (Ord a) => a -> a -> Ordering
+a `mycomp` b
+  | a > b = GT
+  | a == b = EQ
+  | otherwise = LT
+
+-- improving code readability with where clause
+mybmi :: (RealFloat a) => a -> a -> String
+mybmi heightInches weightLbs
+  | bmi <= skinny = "You are a twig"
+  | bmi <= normie = "You are normal"
+  | bmi <= chubbster = "You are a chub"
+  | otherwise = fatshamer
+  where
+    bmi = weightLbs / heightInches^2 * 703 -- standard formula for BMI calculation
+    skinny = 18.5
+    normie = 25.0
+    chubbster = 30.0
