@@ -29,10 +29,10 @@ myguard somevalue
   | somevalue <= 18.5 = "You are a skinty"
   | somevalue <= 25.0 = "You are a normie"
   | somevalue <= 30.0 = "You are a chub"
-  | otherwise = fatshamer
+  | otherwise = shamer
 
-fatshamer :: String
-fatshamer = "Shame on you walking heart attack - that bmi is a to damn high!"
+shamer :: String
+shamer = "Shame on you walking heart attack - that bmi is a to damn high!"
 
 mymax :: (Ord a) => a -> a -> a
 mymax a b
