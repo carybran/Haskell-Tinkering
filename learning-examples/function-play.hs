@@ -51,9 +51,20 @@ mybmi heightInches weightLbs
   | bmi <= skinny = "You are a twig"
   | bmi <= normie = "You are normal"
   | bmi <= chubbster = "You are a chub"
-  | otherwise = fatshamer
+  | otherwise = shamer
   where
     bmi = weightLbs / heightInches^2 * 703 -- standard formula for BMI calculation
     skinny = 18.5
     normie = 25.0
     chubbster = 30.0
+
+bindMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b
+bindMaybe Nothing _ = Nothing
+bindMaybe (Just x) f = f x
+
+foo :: String -> String -> String -> Maybe Int
+foo x y z = readMaybe x `bindMaybe` \num1 ->
+            readMaybe y `bindMaybe` \num2 ->
+            readMaybe z `bindMaybe` \num3 ->
+            Just (num1 + num2 + num3)
+            
